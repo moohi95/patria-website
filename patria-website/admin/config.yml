@@ -1,0 +1,27 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: "news"
+    label: "News"
+    label_singular: "News item"
+    editor:
+      preview: false
+    files:
+      - file: "data/news.json"
+        name: "newslist"
+        label: "News list"
+        fields:
+          - label: "News items"
+            name: "news"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false }
+              - { label: "Summary", name: "body", widget: "text" }
+              - { label: "PDF (optional, path)", name: "pdf", widget: "string", required: false, hint: "e.g. docs/filename.pdf" }
+              - { label: "Image (optional)", name: "image", widget: "image", required: false }
